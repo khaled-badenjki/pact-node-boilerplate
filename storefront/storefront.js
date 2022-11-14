@@ -1,5 +1,5 @@
 const express = require('express')
-const { ping } = require('./storefront')
+const { ping } = require('./handlers')
 const app = express()
 
 const port = process.env.PORT || 3001

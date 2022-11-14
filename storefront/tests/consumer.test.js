@@ -3,7 +3,6 @@ const chai = require('chai')
 const chaiAsPromised = require('chai-as-promised')
 const expect = chai.expect
 const { Pact, Matchers } = require('@pact-foundation/pact')
-const { ping } = require('../storefront')
 
 const LOG_LEVEL = process.env.LOG_LEVEL || 'TRACE'
 
@@ -32,7 +31,9 @@ describe('Pact', () => {
   })
 
   afterEach(() => provider.verify())
-  
+  // TODO: ping is being called with the default url, not the one defined above 
+  const { ping } = require('../handlers')
+
   describe('when a call to the inventory service is made', () => {
     describe('and the serivce is healthy', () => {
       before(() => {
